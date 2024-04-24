@@ -1,4 +1,33 @@
+.column {
+  border: 0.5vh solid black;
+  height: 32%;
+  width: 85%;
+  flex-direction: row;
+  flex: 1;
+  display: flex;
+  margin: 0.4vh;
+}
+
+.card {
+  border: 0.3vh solid rgb(251, 0, 0);
+  flex-direction: row;
+  flex: 1;
+  display: flex;
+  margin: 0.5vh;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 body {
-  background-color: #000000;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+body {
+  background-color: #ffffff;
   color: #007bff;
 }

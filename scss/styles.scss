@@ -1,6 +1,43 @@
 $primary-color: #007bff;
+%linha {
+  border: 0.5vh solid black;
+  height: 32%;
+  width: 85%;
+  flex-direction: row;
+  flex: 1;
+  display: flex;
+  margin: 0.4vh;
+}
+
+%carta {
+  border: 0.3vh solid rgb(251, 0, 0);
+  flex-direction: row;
+  flex: 1;
+  display: flex;
+  margin: 0.5vh;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+%centraliza1 {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 body {
-  background-color: #000000;
+  background-color: #ffffff;
   color: $primary-color;
+  @extend %centraliza1;
+}
+
+.column {
+  @extend %linha;
+}
+
+.card {
+  @extend %carta;
 }
