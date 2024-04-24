@@ -1,6 +1,5 @@
 $primary-color: #007bff;
 %linha {
-  border: 0.5vh solid black;
   height: 32%;
   width: 85%;
   flex-direction: row;
@@ -33,11 +32,30 @@ body {
   color: $primary-color;
   @extend %centraliza1;
 }
-
-.column {
+.row {
   @extend %linha;
 }
 
 .card {
   @extend %carta;
+}
+
+.card.flipped {
+  border: 0.3vh solid;
+  animation: glow 1s infinite alternate;
+}
+
+.card.matched {
+  border: 0.3vh solid #8bc34a;
+}
+
+@keyframes glow {
+  from {
+      border-color: #2800f3;
+      box-shadow: 0 0 10px #2800f3;
+  }
+  to {
+      border-color: #1500a6;
+      box-shadow: 0 0 20px #1500a6;
+  }
 }
