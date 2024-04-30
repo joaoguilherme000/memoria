@@ -5,11 +5,11 @@ $primary-color: #007bff;
   flex-direction: row;
   flex: 1;
   display: flex;
-  margin: 0.4vh;
+  margin-top: 2vh;
 }
 
 %carta {
-  border: 0.3vh solid rgb(251, 0, 0);
+  border: 0.3vh solid rgb(0, 0, 0);
   flex-direction: row;
   flex: 1;
   display: flex;
@@ -32,6 +32,13 @@ body {
   color: $primary-color;
   @extend %centraliza1;
 }
+
+.score {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 .row {
   @extend %linha;
 }
@@ -42,14 +49,15 @@ body {
 
 .card.flipped {
   border: 0.3vh solid;
-  animation: glow 1s infinite alternate;
+  animation: selecting 1s infinite alternate;
 }
 
 .card.matched {
   border: 0.3vh solid #8bc34a;
+  animation: matching 1s infinite alternate;
 }
 
-@keyframes glow {
+@keyframes selecting {
   from {
       border-color: #2800f3;
       box-shadow: 0 0 10px #2800f3;
@@ -57,5 +65,16 @@ body {
   to {
       border-color: #1500a6;
       box-shadow: 0 0 20px #1500a6;
+  }
+}
+
+@keyframes matching {
+  from {
+      border-color: #8bc34a;
+      box-shadow: 0 0 10px #8bc34a;
+  }
+  to {
+      border-color: #6b9739;
+      box-shadow: 0 0 20px #6b9739;
   }
 }
