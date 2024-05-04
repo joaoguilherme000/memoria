@@ -1,6 +1,4 @@
 <?php
-$score = 0;
-
 // Função para embaralhar um array
 function shuffle_array($array) {
     for ($i = count($array) - 1; $i > 0; $i--) {
@@ -13,10 +11,12 @@ function shuffle_array($array) {
 }
 
 // Array de letras para embaralhar
-$letras = ['a', 'b', 'c', 'd', 'e', 'f',];
+$letras = ['a', 'b', 'c', 'd', 'e', 'f'];
+$letras2 = ['a', 'b', 'c', 'd', 'e', 'f'];
 
 // Embaralhar as letras
 $letras_embaralhadas = shuffle_array($letras);
+$letras_embaralhadas2 = shuffle_array($letras2);
 
 ?>
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ $letras_embaralhadas = shuffle_array($letras);
 </head>
 <body>
     <div class="score">
-        SCORE = <?php echo $score; ?>
+        SCORE = <span id="score">0</span>
     </div>
     <div class="row">
         <?php
@@ -44,17 +44,23 @@ $letras_embaralhadas = shuffle_array($letras);
     <div class="row">
         <?php
         // Exibir as cartas com as letras embaralhadas
-        foreach ($letras_embaralhadas as $letra) {
+        foreach ($letras_embaralhadas2 as $letra) {
             echo "<div class='card'>$letra</div>";
         }
         ?>
     </div>
+    <div class="victory-screen" style="display: none;">
+        <h2>Parabéns! Você ganhou!</h2>
+        <button onclick="location.reload()">Jogar Novamente</button>
+    </div>
+    
     <script>
         const cards = document.querySelectorAll('.card');
         let matchedCards = 0;
         let hasFlippedCard = false;
         let lockBoard = false;
         let firstCard, secondCard;
+        let score = 0;
 
         function flipCard() {
             if (lockBoard) return;
@@ -86,9 +92,9 @@ $letras_embaralhadas = shuffle_array($letras);
             secondCard.classList.remove('flipped');
 
             matchedCards += 1;
-
-            // Incrementa o score em 1 ponto
-            <?php $score += 1; ?>
+            
+            score += 1;
+            document.getElementById('score').textContent = score;
 
             resetBoard();
         }
@@ -105,16 +111,14 @@ $letras_embaralhadas = shuffle_array($letras);
         }
 
         function showVictoryScreen() {
-            // Cria uma div para a tela de vitória
-            const victoryScreen = document.createElement('div');
-            victoryScreen.classList.add('victory-screen');
-            victoryScreen.innerHTML = `
-                <h2>Parabéns! Você ganhou!</h2>
-                <button onclick="restartGame()">Jogar Novamente</button>
-            `;
+            console.log("ganhou");
+            const rows = document.querySelectorAll('.row');
+            rows.forEach(row => {
+                row.style.display = 'none';
+            });
+            const victoryScreen = document.querySelector('.victory-screen');
 
-            // Adiciona a tela de vitória ao body
-            document.body.appendChild(victoryScreen);
+            victoryScreen.style.display = 'block';
         }
 
         function resetBoard() {
